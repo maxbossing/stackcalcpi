@@ -1,0 +1,71 @@
+=== STACK ===
+* 32-Cells of RAM (char wide) for usage in calculations
+* Stack pointer wraps around if all cells are used and overwrites the previous content
+* Calculations are done by pushing first number on stack, then inputting second number and pressing operand (~Reverse Polish Notation)
+* Result of calculation (if not erroneous) is pushed into next cell of the stack 
+
+=== DISPLAY ===
+
+11-Segment LED display 
+ - 8 for binary representation of 0-255
+ - 1 for error display if ( result < 0 || result > 255 )
+ - 1 for display of "life signal" (if system operational)
+ - 1 for display if mod-key has been pressed
+
+=== PINS ===
+
+5 Buttons for Stack Manipulation
+
+1 -> Clear Stack Cell
+2 -> Increment Stack Counter
+3 -> Decrement Stack Counter
+4 -> Increment Stack Cell
+5 -> Decrement Stack Cell
+
+3 Buttons for basic arithmatic
+
+1 -> Addition
+2 -> Subtraction
+3 -> Manipulation
+
+// No Division because we cant represent floats in binary
+// Well actually we can, but I dont have enough stuff at home to implement that / Am to lazy (° ° )
+
+1 Button as Modifier Key
+
+-> Doesn't do anything by default, but can be pressed before another key to modify its behaviour
+  * Clear Stack Cell        -> Clear whole Stack
+  * Increment Stack Counter -> Goto last cell
+  * Decrement Stack Counter -> Goto first cell
+  * Increment Stack Cell    -> Set Stack cell to 0xff
+  * Decrement Stack Cell    -> Set Stack cell to 0x00
+
+=== Pinout ===
+
+GPIO0  -> Button Modifier
+GPIO1  -> Button Stack Cell Clear
+GPIO2  -> Button Stack Pointer Increment
+GPIO3  -> Button Stack Pointer Decrement
+GPIO4  -> Button Stack Cell Increment
+GPIO5  -> Button Stack Cell Decrement
+GPIO6  -> Button Arithmatic Addition
+GPIO7  -> Button Arithmatic Subtraction
+GPIO8  -> Button Arithmatic Multiplication
+GPIO9  ->
+GPIO10 ->
+GPIO11 ->
+GPIO12 ->
+GPIO13 ->
+GPIO14 ->
+GPIO15 ->
+GPIO16 -> LED Error
+GPIO17 -> LED 1 
+GPIO18 -> LED 2
+GPIO19 -> LED 4
+GPIO20 -> LED 8
+GPIO21 -> LED 16 
+GPIO22 -> LED 32
+GPIO25 -> LED Life
+GPIO26 -> LED 64
+GPIO27 -> LED 128
+GPIO28 -> LED Mod
